@@ -18,25 +18,29 @@
 <main>
 
 <?php 
-// setcookie("encPassword", '', time() -3600, "/");
-// unset($_SESSION["encPassword"]);
+// setcookie("securityPassword", '', time() -3600, "/");
+// unset($_SESSION["securityPassword"]);	
+
 include "encrypt.php";
 if (isset($_POST["submit"])) {
 	$_SESSION["email"] = $_POST["email"];
 	$_SESSION["password"] = $_POST["password"];
-	$conn = mysqli_connect("localhost", "OurCommunity", "1o2u3r4c5o@", "ourcommunity");
-	$result = mysqli_query($conn, "Select * from users where email = '" . $_POST["email"] . "'");
-	if (mysqli_num_rows($result)) {
-		$info = mysqli_fetch_assoc($result);
-		mysqli_free_result($result);
+	$conn = mysqli_connect("sql104.epizy.com", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
+	$stmt = mysqli_prepare($conn, "Select * from Users where email = ?");
+	mysqli_stmt_bind_param($stmt, "s", $_POST["email"]);
+	mysqli_execute($stmt);
+	$result = mysqli_stmt_get_result($stmt);	
+	$info = mysqli_fetch_assoc($result);
+	if ($info) {
+		mysqli_stmt_free_result($stmt);
 		mysqli_close($conn);
 		if ($info["password"] != $_POST["password"]) {
 			$_SESSION["passwordErr"] = True;
 		} else {
-			$encPassword = encode($info["name"]);
-			$_SESSION["encPassword"] = $encPassword;
+			$securityPassword = encode($info["name"]);
+			$_SESSION["securityPassword"] = $securityPassword;
 			if (isset($_POST["remember"]) && $_POST["remember"] == "on") {
-				setcookie("encPassword", $encPassword, time() + 86400 * 30, "/");
+				setcookie("securityPassword", $securityPassword, time() + 86400 * 30, "/");
 			}
 			header("Location: index.php");
 		}
