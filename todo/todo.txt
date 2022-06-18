@@ -1,0 +1,58 @@
+add google, facebook login
+add forgot password on login
+add more links to footer
+add eye symbol in password to see characters
+add progress to password to show strength
+add a question mark to password to show how to increase password strength by clicking on it
+add I agree to terms checkbox
+add error reporting to a file to solve errors users encounter
+add phone login
+add night mode
+prevent sql injection
+learn pdo
+add animations
+
+<?php
+
+if (isset($_POST["submit"])) {
+	if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+		$emailErr = "*Email not valid";
+	}
+}
+
+?>
+
+document.forms[0].pass.addEventListener("change", function() {
+	let pass = document.forms[0].pass.value;
+	let err = document.getElementById("passwordErr");
+	let strength = [/[a-z]/.test(pass), /[A-Z]/.test(pass), 
+	/\d/.test(pass), pass.length >= 8,
+	/[-!@#$%^&*\(\)_=+`~.>,<\/?'";:\\|]/.test(pass)]
+	.reduce((sum, num) => sum + num, 0);
+	switch (strength) {
+		case 0:
+		case 1:
+			err.innerHTML = "*very weak password";
+			err.style.color = "red";
+			break;
+		case 2:
+			err.innerHTML = "*weak password";
+			err.style.color = "pink";
+			break;
+		case 3:
+			err.innerHTML = "*good password";
+			err.style.color = "orange";
+			break;
+		case 4:
+			err.innerHTML = "*very good password";
+			err.style.color = "lightgreen";
+			break;
+		case 5:
+			err.innerHTML = "*excellent password"
+			err.style.color = "green";
+			break;
+	}
+})
+document.forms[0].email.addEventListener("input", function() {
+	document.getElementById("emailErr").innerHTML = "";
+});
