@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 	<meta name="description" content="a community for meeting friends, sending messages, chating, etc....">
 	<meta name="keywords" content="community chat message friends meeting">
-	<script src="scripts/login.js" defer></script>
+	<script type="text/javascript" src="scripts/login.js" defer></script>
 	<link rel="icon" href="pictures/community_logo.webp">
 	<link rel="stylesheet" href="styles/login.css" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@ include "encrypt.php";
 if (isset($_POST["submit"])) {
 	$_SESSION["email"] = $_POST["email"];
 	$_SESSION["password"] = $_POST["password"];
-	$conn = mysqli_connect("sql104.epizy.com", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
+	$conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
 	$stmt = mysqli_prepare($conn, "Select * from Users where email = ?");
 	mysqli_stmt_bind_param($stmt, "s", $_POST["email"]);
 	mysqli_execute($stmt);
@@ -56,13 +56,13 @@ if (isset($_POST["submit"])) {
 Log in to OurCommunity<br />
 	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
 		<input type="email" name="email" placeholder="Email address" autocomplete="email" style="<?php if (isset($_SESSION["emailErr"])) echo "border-color: red"; ?>" value="<?php if (isset($_SESSION["email"])) echo $_SESSION["email"]; ?>" />
-		<div id="emailErr"><?php if (isset($_SESSION["emailErr"])) {echo "Wrong Email"; unset($_SESSION["emailErr"]);} ?></div>
+		<div id="emailErr" class="err"><?php if (isset($_SESSION["emailErr"])) {echo "Wrong Email"; unset($_SESSION["emailErr"]);} ?></div>
 		<input type="password" name="password" placeholder="Password" autocomplete="current-password" style="<?php if (isset($_SESSION["passwordErr"])) echo "border-color: red"; ?>" value="<?php if (isset($_SESSION["password"])) echo $_SESSION["password"]; ?>" />
-		<div id="passwordErr"><?php if (isset($_SESSION["passwordErr"])) {echo "Wrong Password"; unset($_SESSION["passwordErr"]);} ?></div>
+		<div class="err"><?php if (isset($_SESSION["passwordErr"])) {echo "Wrong Password"; unset($_SESSION["passwordErr"]);} ?></div>
 		<input type="submit" name="submit" class="submit" value="log in" />
 		<div class="remember-div">
 			<label>
-				<input type="checkbox" name="remember" value="on" /> remember me 
+				<input type="checkbox" name="remember" value="on" checked /> remember me 
 			</label>
 		</div>
 	</form>
@@ -71,15 +71,15 @@ Log in to OurCommunity<br />
 		<div class="or">or</div>
 	</div>
 	<br />
-	<a href="#">Log In</a>
+	<a href="signup.php">Sign Up</a>
 	<br />
 </div>
 
 </main>
 <footer>
 <a href="#" lang="ar" hreflang="ar">العربية</a>
-<a href="#">sign up</a>
-<a href="#">log in</a>
+<a href="signup.php">sign up</a>
+<a href="login.php">log in</a>
 <a href="#">about</a>
 <br /><br />
 &copy; Ezzeldien 2022

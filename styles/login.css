@@ -8,12 +8,12 @@ body {
 a {
 	text-decoration: none;
 }
-/****************** signup form *******************/
 main {
 	width: 400px;
 	margin: 30px auto 60px;
 	font-family: 'Lusitana', serif;
 }
+/****************** login form *******************/
 h1 {
 	font-family: 'Lobster', cursive;
 	font-size: 40px;
@@ -41,7 +41,7 @@ input:not([type="checkbox"]) {
 	text-align: left;
 }
 input::placeholder {
-	color: grey;
+	color: darkslategrey;
 }
 input:focus {
 	outline: solid lemonchiffon 3px;
@@ -50,7 +50,7 @@ input:focus {
 input:focus::placeholder {
 	color: lightgrey;
 }
-#emailErr, #passwordErr {
+.err {
 	color: red;
 	font-size: 15px;
 	text-align: left;
