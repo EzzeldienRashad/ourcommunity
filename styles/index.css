@@ -1,1 +1,79 @@
-﻿
+﻿/***************** general styles ******************/
+* {
+    box-sizing: border-box;
+    font-family: 'Lusitana', serif;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+main {
+    padding-top: 50px;
+}
+/***************** header ******************/
+header span.decoration {
+    display: block;
+    height: 10px;
+    background-color: lightcyan;
+    background-image: repeating-linear-gradient(140deg, lightcyan 0%, violet 2%, lightcyan 4%);
+}
+header {
+    background-color: fuchsia;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+}
+header div {
+    height: 40px;
+}
+h1 {
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+    display: inline-block;
+    text-align: left;
+    background-image: linear-gradient(to right, red 0%, green 50%, blue 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+.hello {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 40%;
+    font-size: 30px;
+}
+.hello span {
+    font-family: 'Style Script', cursive;
+}
+.fright {
+    float: right;
+}
+.logout {
+    display: inline-block;
+    padding: 0px;
+}
+.logout input {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transition-duration: 0.25s;
+    padding: 5px;
+    height: 40px;
+    font-size: 20px;
+}
+.logout input:hover {
+    color: white;
+}
+.user {
+    border-image: repeating-linear-gradient(50deg, yellow 0%, red 5%, yellow 10%);
+    border-width: 10px;
+    border-style: solid;
+    border-image-slice: 1;
+    padding: 20px 10px;
+    font-size: 20px;
+    margin: 10px;
+}

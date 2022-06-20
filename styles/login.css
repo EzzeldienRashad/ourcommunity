@@ -100,33 +100,33 @@ footer {
 /****************** other devices *******************/
 @media only screen and (max-width: 500px) {
 	
-main {
-	width: 300px;
-	margin: 20px auto;
-}
-.form {
-	padding: 10px;
-}
-input {
-	padding: 5px;
-	margin: 10px 0;
-	font-size: 15px;
-	border-radius: 5px;
-}
-input:focus {
-	outline: solid lemonchiffon 1px;
-	box-shadow: 0 0 2px 2px lemonchiffon;
-}
-.form a {
-	font-size: 15px;
-	padding: 5px;
-	border-radius: 5px;
-}
-footer a {
-	margin: 5px;
-}
-footer {
-	padding: 5px;
-}
+	main {
+		width: 300px;
+		margin: 20px auto;
+	}
+	.form {
+		padding: 10px;
+	}
+	input {
+		padding: 5px;
+		margin: 10px 0;
+		font-size: 15px;
+		border-radius: 5px;
+	}
+	input:focus {
+		outline: solid lemonchiffon 1px;
+		box-shadow: 0 0 2px 2px lemonchiffon;
+	}
+	.form a {
+		font-size: 15px;
+		padding: 5px;
+		border-radius: 5px;
+	}
+	footer a {
+		margin: 5px;
+	}
+	footer {
+		padding: 5px;
+	}
 	
 }
