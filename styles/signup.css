@@ -82,6 +82,10 @@ input:focus::placeholder {
     font-size: 15px;
     text-align: left;
 }
+.login-redirect {
+    color: royalblue;
+    font-size: 18px;
+}
 /****************** footer *******************/
 footer a {
     margin: 10px;

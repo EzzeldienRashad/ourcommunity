@@ -15,3 +15,6 @@ after signup redirect to a page to collect more information if the user wants li
 add settings page
 add pages to every link in the footer
 redirect from login or signup to index if user is logged in
+trim email, username and password
+add error pages for could not connect to database/page not found
+add links in footer for arabic language and about page

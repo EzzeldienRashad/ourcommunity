@@ -1,4 +1,4 @@
-document.forms[0].password.addEventListener("change", function () {
+document.forms[0].password.addEventListener("input", function () {
 	let password = document.forms[0].password.value;
 	let passStrengthInfo = document.getElementById("passStrengthInfo");
 	let strength = [/[a-z]/.test(password), /[A-Z]/.test(password),
