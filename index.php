@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="styles/index.css" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Lusitana&family=Style+Script&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Lusitana&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -58,13 +58,14 @@ if (isset($_POST["logout"])) {
 ?>
 <span class="decoration"></span>
 <h1>OurCommunity</h1>
-<div class="hello"><?php echo "Hello <span>" . $name . "</span>!"; ?></div>
+<div class="hello"><?php echo "Hello, <span>" . $name . "</span>!"; ?></div>
 <form class="fright logout" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
 	<input type="submit" name="logout" value="logout" />
 </form>
 </header>
 <main>
 
+<h2>Other users:</h2>
 <?php
 $result = mysqli_query($conn, "SELECT * FROM Users");
 $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -74,5 +75,11 @@ foreach ($users as $user) {
 }
 ?>
 </main>
+<footer>
+<a href="signup.php">sign up</a>
+<a href="login.php">log in</a>
+<br /><br />
+&copy; Ezzeldien 2022
+</footer>
 </body>
 </html>

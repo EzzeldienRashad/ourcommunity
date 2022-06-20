@@ -12,6 +12,7 @@ a {
 }
 main {
     padding-top: 50px;
+    min-height: 400px;
 }
 /***************** header ******************/
 header span.decoration {
@@ -47,7 +48,7 @@ h1 {
     font-size: 30px;
 }
 .hello span {
-    font-family: 'Style Script', cursive;
+    font-family: 'Lobster', cursive;
 }
 .fright {
     float: right;
@@ -62,11 +63,14 @@ h1 {
     background-color: transparent;
     transition-duration: 0.25s;
     padding: 5px;
-    height: 40px;
     font-size: 20px;
 }
 .logout input:hover {
     color: white;
+}
+/***************** main page contents ******************/
+h2 {
+    margin-left: 10px;
 }
 .user {
     border-image: repeating-linear-gradient(50deg, yellow 0%, red 5%, yellow 10%);
@@ -76,4 +80,74 @@ h1 {
     padding: 20px 10px;
     font-size: 20px;
     margin: 10px;
+}
+/***************** footer ******************/
+footer a {
+    margin: 10px;
+    color: darkgrey;
+}
+
+footer {
+    background-color: white;
+    padding: 10px;
+    color: darkgrey;
+}
+/***************** other devices ******************/
+@media only screen and (max-width: 750px) {
+
+    h1, .hello {
+        font-size: 25px;
+    }
+    .logout input {
+        padding: 0 5px;
+    }
+    header {
+        height: 40px;
+    }
+    .hello {
+        left: 35%;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    .user {
+        border-width: 5px;
+        padding: 10px 5px;
+        font-size: 15px;
+        margin: 10px;
+    }
+    footer a {
+        margin: 5px;
+    }
+    footer {
+        padding: 5px;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    h1, .hello {
+        font-size: 15px;
+    }
+    .logout input {
+        font-size: 15px;
+    }
+    header {
+        height: 30px;
+    }
+    h2 {
+        margin: 5px;
+        font-size: 15px;
+    }
+    .user {
+        border-width: 5px;
+        padding: 5px;
+        font-size: 12px;
+        margin: 5px;
+    }
+    footer {
+        font-size: 10px;
+    }
+
 }

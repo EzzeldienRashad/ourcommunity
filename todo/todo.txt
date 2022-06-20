@@ -19,3 +19,4 @@ trim email, username and password
 add error pages for could not connect to database/page not found
 add links in footer for arabic language and about page
 add picture to each user
+do not show current user in "other users"
