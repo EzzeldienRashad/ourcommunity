@@ -20,6 +20,11 @@
 <?php include "header.php"; ?>
 <main>
 
+<div class="comment">
+	<h2>a</h2><span class="curve"></span>
+	<div>a</div>
+</div>
+
 </main>
 <footer>
 <a href="signup.php">sign up</a>

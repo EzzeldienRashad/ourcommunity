@@ -1,1 +1,51 @@
 ﻿/***************** main page contents ******************/
+main {
+    padding: 10px;
+}
+h2 {
+    color: white;
+    background-color: darkgoldenrod;
+    padding: 10px 30px 10px 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 90%;
+    display: inline-block;
+    margin-bottom: 0;
+}
+.comment span {
+    background-color: darkgoldenrod;
+    display: inline-block;
+    border-top-right-radius: 50%;
+    width: 9%;
+    height: 50.5px;
+}
+.comment div {
+    border: 2px solid black;
+    padding: 10px;
+    margin-top: -5px;
+    word-wrap: break-word;
+}
+.comment {
+    margin-bottom: 10px;
+}
+@media only screen and (max-width: 600px) {
+
+    main {
+        padding: 5px;
+    }
+    h2 {
+        padding: 5px 15px 5px 5px;
+    }
+    .comment span {
+        height: 40.5px;
+    }
+    .comment div {
+        padding: 5px;
+    }
+    .comment {
+        margin-bottom: 5px;
+    }
+
+
+}

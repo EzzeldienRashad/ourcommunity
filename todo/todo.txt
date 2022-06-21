@@ -22,3 +22,4 @@ add picture to each user
 do not show current user in "other users"
 fade effect to hello user at header on page load
 add effects to users cards on page load
+add different ways to show user cards
