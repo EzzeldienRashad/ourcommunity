@@ -46,6 +46,7 @@ if (isset($_POST["logout"])) {
 	<span></span>
 </div>
 <div class="dropdown">
+<a href="index.php">main page</a>
 <a href="users.php">other users</a>
 <form class="logout" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
 	<input type="submit" name="logout" value="logout" />
