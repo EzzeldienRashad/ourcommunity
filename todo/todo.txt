@@ -30,3 +30,4 @@ add retype password field
 check website using lighthouse
 add wrong sign next to textbox to abort comment adding
 add ourcommunity- prefix to the names of cookies and sessions
+show our community logo on header

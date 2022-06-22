@@ -1,7 +1,7 @@
 // get and update comments
 let commentsCont = document.getElementsByClassName("comments-cont")[0];
 function loadComments() {
-    fetch("arrays/comments.json")
+    fetch("arrays/comments.json?nocache=123")
         .then(response => response.json())
         .then(function (comments) {
             commentsCont.innerHTML = "";
@@ -15,7 +15,11 @@ function loadComments() {
                 curve.className = "curve";
                 commentCont.append(curve);
                 let commentBody = document.createElement("div");
-                commentBody.textContent = comment;
+                let commentArr = comment.replace(/\r/g, "").split("\n");
+                for (let commentPart of commentArr) {
+                    commentBody.appendChild(document.createTextNode(commentPart));
+                    commentBody.appendChild(document.createElement("br"));
+                }
                 commentCont.append(commentBody);
                 commentsCont.append(commentCont);
             }
@@ -26,4 +30,5 @@ setInterval(loadComments, 1000);
 // showing comments area
 document.getElementsByClassName("add-comment")[0].addEventListener("click", function () {
     document.getElementsByClassName("new-comment")[0].classList.toggle("display-comment-area");
+    document.getElementsByClassName("new-comment")[0].querySelector("textarea").focus();
 })
