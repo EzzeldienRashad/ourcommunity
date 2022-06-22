@@ -44,7 +44,7 @@ h2 {
     transition-property: height;
 }
 .display-comment-area {
-    height: 90px;
+    height: 120px;
 }
 .new-comment textarea {
     width: 80vw;

@@ -23,7 +23,7 @@ include "header.php";
 if (isset($_POST["comment"])) {
 	$comments = json_decode(file_get_contents("arrays/comments.json"));
 	$name = isset($_SESSION["securityPassword"]) ? decode($_SESSION["securityPassword"])[0] : "unknown user";
-	$newComments = array(array($name, $_POST["commentText"] != "" ? $_POST["commentText"] : "|"), ...array_slice($comments, 0, 3));
+	$newComments = array(array($name, $_POST["commentText"] != "" ? $_POST["commentText"] : "|"), ...array_slice($comments, 0, 10));
 	file_put_contents("arrays/comments.json", json_encode($newComments));
 }
 ?>
