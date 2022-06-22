@@ -11,7 +11,7 @@ a {
     text-decoration: none;
 }
 main {
-    padding-top: 50px;
+    padding-top: 60px;
     min-height: 300px;
 }
 /***************** header ******************/
@@ -120,6 +120,9 @@ footer {
 /***************** other devices ******************/
 @media only screen and (max-width: 750px) {
 
+    main {
+        padding-top: 50px;
+    }
     h1, .hello {
         font-size: 25px;
     }
@@ -161,6 +164,9 @@ footer {
 
 @media only screen and (max-width: 600px) {
 
+    main {
+        padding-top: 40px;
+    }
     h1, .hello {
         font-size: 15px;
     }

@@ -18,9 +18,8 @@
 <main>
 
 <?php 
-// setcookie("securityPassword", '', time() -3600, "/");
-// unset($_SESSION["securityPassword"]);	
 
+// Check if user already exists
 include "encrypt.php";
 if (isset($_SESSION["securityPassword"])) {
 	[$name, $password] = decode($_SESSION["securityPassword"]);
@@ -44,6 +43,7 @@ if (isset($name) && isset($password)) {
 	}
 }
 
+// check for errors, then log user in
 if (isset($_POST["submit"])) {
 	$_SESSION["email"] = $_POST["email"];
 	$_SESSION["password"] = $_POST["password"];

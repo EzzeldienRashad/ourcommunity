@@ -19,6 +19,7 @@
 
 <?php
 
+// Check if user is already logged in
 include "encrypt.php";
 if (isset($_SESSION["securityPassword"])) {
 	[$name, $password] = decode($_SESSION["securityPassword"]);
@@ -42,6 +43,7 @@ if (isset($name) && isset($password)) {
 	}
 }
 
+// Check for errors, then add the user to the database
 if (isset($_POST["submit"])) {
 	$_SESSION["name"] = $_POST["name"];
 	$_SESSION["email"] = $_POST["email"];

@@ -29,6 +29,49 @@ h2 {
 .comment {
     margin-bottom: 10px;
 }
+.add-comment {
+    background-color: gold;
+    cursor: pointer;
+}
+.add-comment:focus {
+    outline: none;
+}
+.new-comment {
+    height: 0;
+    position: relative;
+    overflow: hidden;
+    transition-duration: 1s;
+    transition-property: height;
+}
+.display-comment-area {
+    height: 90px;
+}
+.new-comment textarea {
+    width: 80vw;
+    height: 20vh;
+    border: 2px solid gold;
+}
+.new-comment textarea:focus {
+    outline: 2px solid darkgoldenrod;
+}
+.add-comment-btn {
+    width: 12vw;
+    padding: 20px 5px;
+    cursor: pointer;
+    border: 1px solid deeppink;
+    background-color: orangered;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    transition-duration: 0.25s;
+}
+.add-comment-btn:hover {
+    background-color: darkred;
+    color: white;
+    border: 1px solid darkviolet;
+}
+/***************** other devices *****************/
 @media only screen and (max-width: 600px) {
 
     main {
@@ -36,16 +79,19 @@ h2 {
     }
     h2 {
         padding: 5px 15px 5px 5px;
+        font-size: 18px;
+        max-width: 93%;
     }
     .comment span {
-        height: 40.5px;
+        height: 33.3px;
+        width: 6%;
     }
     .comment div {
         padding: 5px;
+        font-size: 14px;
     }
     .comment {
         margin-bottom: 5px;
     }
-
 
 }

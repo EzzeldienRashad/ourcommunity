@@ -1,5 +1,7 @@
 <header>
 <?php
+
+// Check if user doesn't exist
 include "encrypt.php";
 if (isset($_SESSION["securityPassword"])) {
 	[$name, $password] = decode($_SESSION["securityPassword"]);
@@ -31,6 +33,7 @@ if (isset($name) && isset($password)) {
 	exit;
 }
 
+// log user out if they press logout
 if (isset($_POST["logout"])) {
 	unset($_SESSION["securityPassword"]);
 	setcookie("securityPassword", "", time() - 3600, "/");
@@ -54,15 +57,17 @@ if (isset($_POST["logout"])) {
 </div>
 </header>
 <script>
+	// Position "Hello user!" correctly
 	window.addEventListener("DOMContentLoaded", function() {
 		if (document.documentElement.clientWidth > 900) {
 			document.getElementsByClassName("hello")[0].style.left =
 				document.documentElement.clientWidth / 2 - document.getElementsByClassName("hello")[0]
 					.offsetWidth / 2 + "px";
 		}
+		// position footer correctly
 		document.getElementsByTagName("main")[0].style.minHeight =
 			document.documentElement.clientHeight - 80 + "px";
-
+		// show dropdown on menu click
 		document.getElementsByClassName("menu")[0].addEventListener("click", function () {
 			document.getElementsByClassName("dropdown")[0].classList.toggle("display-dropdown");
 		});

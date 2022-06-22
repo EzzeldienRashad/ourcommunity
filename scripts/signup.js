@@ -1,3 +1,4 @@
+// Check password strength
 document.forms[0].password.addEventListener("input", function () {
 	let password = document.forms[0].password.value;
 	let passStrengthInfo = document.getElementById("passStrengthInfo");
@@ -30,6 +31,7 @@ document.forms[0].password.addEventListener("input", function () {
 	}
 })
 
+// Delete errors when user begins writing
 document.forms[0].email.addEventListener("input", function () {
 	document.getElementById("emailErr").innerHTML = "";
 });
