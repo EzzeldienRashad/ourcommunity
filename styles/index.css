@@ -44,26 +44,26 @@ h2 {
     transition-property: height;
 }
 .display-comment-area {
-    height: 120px;
+    height: 130px;
+    padding: 5px;
 }
 .new-comment textarea {
     width: 80vw;
-    height: 20vh;
+    height: 110px;
     border: 2px solid gold;
 }
 .new-comment textarea:focus {
     outline: 2px solid darkgoldenrod;
 }
 .add-comment-btn {
-    width: 12vw;
-    padding: 20px 5px;
+    padding: 35px 30px;
     cursor: pointer;
     border: 1px solid deeppink;
     background-color: orangered;
     border-radius: 50%;
     position: absolute;
     top: 20px;
-    right: 0;
+    right: 20px;
     transition-duration: 0.25s;
 }
 .add-comment-btn:hover {
@@ -72,6 +72,13 @@ h2 {
     border: 1px solid darkviolet;
 }
 /***************** other devices *****************/
+@media only screen and (max-width: 750px) {
+
+    .add-comment-btn {
+        right: 0;
+    }
+
+}
 @media only screen and (max-width: 600px) {
 
     main {
@@ -82,7 +89,10 @@ h2 {
         font-size: 18px;
         max-width: 93%;
     }
-    .comment span {
+    .add-comment-btn {
+        padding: 15px 10px;
+    }
+   .comment span {
         height: 33.3px;
         width: 6%;
     }

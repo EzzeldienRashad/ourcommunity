@@ -1,9 +1,10 @@
 // get and update comments
 let commentsCont = document.getElementsByClassName("comments-cont")[0];
 function loadComments() {
-    fetch("arrays/comments.json?nocache=123")
+    fetch("arrays/comments.json?nocache=" + Date.now())
         .then(response => response.json())
         .then(function (comments) {
+            let scroll = scrollY;
             commentsCont.innerHTML = "";
             for (let [name, comment] of comments) {
                 let commentCont = document.createElement("div");
@@ -22,6 +23,8 @@ function loadComments() {
                 }
                 commentCont.append(commentBody);
                 commentsCont.append(commentCont);
+                curve.style.height = commenter.offsetHeight + "px";
+                scrollTo(0, scroll);
             }
         });
 }

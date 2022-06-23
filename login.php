@@ -3,22 +3,22 @@
 <html lang="en">
 <head>
 	<title>OurCommunity login</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-	<meta name="description" content="a community for meeting friends, sending messages, chating, etc....">
-	<meta name="keywords" content="community chat message friends meeting">
+	<meta name="description" content="Login to OurCommunity, a community for meeting friends, sending messages, playing, etc...." />
+	<meta name="author" content="Ezzeldien Rashad" />
+	<meta name="keywords" content="community, chat, message friends, meeting, login, playing games" />
 	<script type="text/javascript" src="scripts/login.js" defer></script>
-	<link rel="icon" href="pictures/community_logo.webp">
+	<link rel="icon" href="pictures/community_logo.webp" />
 	<link rel="stylesheet" href="styles/login.css" />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Lusitana&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Lusitana&display=swap" rel="stylesheet" />
 </head>
 <body>
 <main>
 
 <?php 
-
 // Check if user already exists
 include "encrypt.php";
 if (isset($_SESSION["securityPassword"])) {
@@ -27,7 +27,7 @@ if (isset($_SESSION["securityPassword"])) {
 	[$name, $password] = decode($_COOKIE["securityPassword"]);
 }
 if (isset($name) && isset($password)) {
-	$conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
+	$conn = mysqli_connect("sql104.epizy.com", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
 	$stmt = mysqli_prepare($conn, "SELECT securityPassword FROM Users WHERE name = ?");
 	mysqli_stmt_bind_param($stmt, "s", $name);
 	mysqli_stmt_execute($stmt);
@@ -47,7 +47,7 @@ if (isset($name) && isset($password)) {
 if (isset($_POST["submit"])) {
 	$_SESSION["email"] = $_POST["email"];
 	$_SESSION["password"] = $_POST["password"];
-	$conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
+	$conn = mysqli_connect("sql104.epizy.com", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
 	$stmt = mysqli_prepare($conn, "SELECT * FROM Users WHERE email = ?");
 	mysqli_stmt_bind_param($stmt, "s", $_POST["email"]);
 	mysqli_execute($stmt);
@@ -89,7 +89,7 @@ Log in to OurCommunity<br />
 			</label>
 		</div>
 	</form>
-	<div class="flex">
+	<div class="relative">
 		<hr />
 		<div class="or">or</div>
 	</div>

@@ -12,7 +12,7 @@ if (isset($_SESSION["securityPassword"])) {
 	exit;
 }
 if (isset($name) && isset($password)) {
-	$conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
+	$conn = mysqli_connect("sql104.epizy.com", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
 	$stmt = mysqli_prepare($conn, "SELECT securityPassword FROM Users WHERE name = ?");
 	mysqli_stmt_bind_param($stmt, "s", $name);
 	mysqli_execute($stmt);
@@ -58,18 +58,18 @@ if (isset($_POST["logout"])) {
 </header>
 <script>
 	// Position "Hello user!" correctly
+	if (document.documentElement.clientWidth > 900) {
+		document.getElementsByClassName("hello")[0].style.left =
+			document.documentElement.clientWidth / 2 - document.getElementsByClassName("hello")[0]
+			.offsetWidth / 2 + "px";
+	}
+	// show dropdown on menu click
+	document.getElementsByClassName("menu")[0].addEventListener("click", function () {
+		document.getElementsByClassName("dropdown")[0].classList.toggle("display-dropdown");
+	});
+	// position footer correctly
 	window.addEventListener("DOMContentLoaded", function() {
-		if (document.documentElement.clientWidth > 900) {
-			document.getElementsByClassName("hello")[0].style.left =
-				document.documentElement.clientWidth / 2 - document.getElementsByClassName("hello")[0]
-					.offsetWidth / 2 + "px";
-		}
-		// position footer correctly
 		document.getElementsByTagName("main")[0].style.minHeight =
 			document.documentElement.clientHeight - 80 + "px";
-		// show dropdown on menu click
-		document.getElementsByClassName("menu")[0].addEventListener("click", function () {
-			document.getElementsByClassName("dropdown")[0].classList.toggle("display-dropdown");
-		});
 	});
 </script>

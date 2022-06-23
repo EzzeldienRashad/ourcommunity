@@ -5,11 +5,12 @@
 	<title>OurCommunity</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-	<meta name="description" content="a community for meeting friends, sending messages, chating, etc....">
-	<meta name="keywords" content="community chat message friends meeting">
+	<meta name="author" content="Ezzeldien Rashad" />
+	<meta name="description" content="OurCommunity, a community for meeting friends, sending messages, playing, etc....">
+	<meta name="keywords" content="community, chat, message friends, meeting, main page, playing games" />
 	<script type="text/javascript" src="scripts/index.js" defer></script>
 	<script src="https://kit.fontawesome.com/5cf0e9fc67.js" crossorigin="anonymous"></script>
-	<script src="arrays/comments.json?nocache=123" ></script>
+	<script src="arrays/comments.json?nocache=<?php echo time(); ?>" ></script>
 	<link rel="icon" href="pictures/community_logo.webp">
 	<link rel="stylesheet" href="styles/index.css" />
 	<link rel="stylesheet" href="styles/header-footer.css" />
@@ -22,7 +23,8 @@
 include "header.php"; 
 if (isset($_POST["comment"])) {
 	$comments = json_decode(file_get_contents("arrays/comments.json"));
-	$name = isset($_SESSION["securityPassword"]) ? decode($_SESSION["securityPassword"])[0] : "unknown user";
+	$name = isset($_SESSION["securityPassword"]) ? decode($_SESSION["securityPassword"])[0] :
+	 isset($_COOKIE["securityPassword"]) ? decode($_COOKIE["securityPassword"])[0] : "unknown user";
 	$newComments = array(array($name, $_POST["commentText"] != "" ? $_POST["commentText"] : "|"), ...array_slice($comments, 0, 10));
 	file_put_contents("arrays/comments.json", json_encode($newComments));
 }

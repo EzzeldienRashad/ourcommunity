@@ -2,12 +2,14 @@
 document.forms[0].password.addEventListener("input", function () {
 	let password = document.forms[0].password.value;
 	let passStrengthInfo = document.getElementById("passStrengthInfo");
-	let strength = [/[a-z]/.test(password), /[A-Z]/.test(password),
-		/\d/.test(password), password.length >= 8,
-		/[-!@#$%^&*\(\)_=+`~.>,<\/?'";:\\|]/.test(password)]
-		.reduce((sum, num) => sum + num, 0);
+	let strength = /[a-z]/.test(password) + /[A-Z]/.test(password) +
+		/\d/.test(password) + (password.length >= 8) +
+		/[-!@#$%^&*\(\)_=+`~.>,<\/?'";:\\|]/.test(password)
 	switch (strength) {
 		case 0:
+			passStrengthInfo.innerHTML = "";
+			passStrengthInfo.style.color = "";
+			break;
 		case 1:
 			passStrengthInfo.innerHTML = "*very weak password";
 			passStrengthInfo.style.color = "red";

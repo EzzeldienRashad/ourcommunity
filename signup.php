@@ -5,8 +5,9 @@
 	<title>OurCommunity signup</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-	<meta name="description" content="a community for meeting friends, sending messages, chating, etc....">
-	<meta name="keywords" content="community chat message friends meeting signup">
+	<meta name="author" content="Ezzeldien Rashad" />
+	<meta name="description" content="Sign up to OurCommunity, a community for meeting friends, sending messages, playing, etc....">
+	<meta name="keywords" content="community, chat, message friends, meeting, signup, playing games" />
 	<script type="text/javascript" src="scripts/signup.js" defer></script>
 	<link rel="icon" href="pictures/community_logo.webp">
 	<link rel="stylesheet" href="styles/signup.css" />
@@ -27,7 +28,7 @@ if (isset($_SESSION["securityPassword"])) {
 	[$name, $password] = decode($_COOKIE["securityPassword"]);
 }
 if (isset($name) && isset($password)) {
-	$conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
+	$conn = mysqli_connect("sql104.epizy.com", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
 	$stmt = mysqli_prepare($conn, "SELECT securityPassword FROM Users WHERE name = ?");
 	mysqli_stmt_bind_param($stmt, "s", $name);
 	mysqli_stmt_execute($stmt);
@@ -53,11 +54,11 @@ if (isset($_POST["submit"])) {
 	} else if (strlen($_POST["name"]) < 3) {
 		$_SESSION["nameErr"] = "*name too short";
 	} else if (!preg_match("/^[\w\d\s_]+$/", $_POST["name"])) {
-		$_SESSION["nameErr"] = "*name has unallowed caracters";
+		$_SESSION["nameErr"] = "*name has unallowed characters";
 	} else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
 		$_SESSION["emailErr"] = "*Email not valid";
 	} else {
-		$conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
+		$conn = mysqli_connect("sql104.epizy.com", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
 		$stmt = mysqli_prepare($conn, "SELECT * FROM Users WHERE email = ?");
 		mysqli_stmt_bind_param($stmt, "s", $_POST["email"]);
 		mysqli_execute($stmt);
