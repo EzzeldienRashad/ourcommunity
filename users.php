@@ -23,7 +23,7 @@
 <h2>Other users:</h2>
 <?php
 // show users present in database
-$conn = mysqli_connect("sql104.epizy.com", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
+$conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
 $result = mysqli_query($conn, "SELECT * FROM Users");
 $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);

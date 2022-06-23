@@ -12,7 +12,7 @@ if (isset($_SESSION["securityPassword"])) {
 	exit;
 }
 if (isset($name) && isset($password)) {
-	$conn = mysqli_connect("sql104.epizy.com", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
+	$conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
 	$stmt = mysqli_prepare($conn, "SELECT securityPassword FROM Users WHERE name = ?");
 	mysqli_stmt_bind_param($stmt, "s", $name);
 	mysqli_execute($stmt);

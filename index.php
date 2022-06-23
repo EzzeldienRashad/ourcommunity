@@ -32,7 +32,7 @@ if (isset($_POST["comment"])) {
 <main>
 
 <button class="add-comment">+ add comment</button>
-<form class="new-comment" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
+<form class="new-comment" aria-hidden="true" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
 	<textarea name="commentText"></textarea>
 	<input class="add-comment-btn" type="submit" name="comment" value="+add" />
 </form>

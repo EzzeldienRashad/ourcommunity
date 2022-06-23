@@ -32,6 +32,12 @@ loadComments();
 setInterval(loadComments, 1000);
 // showing comments area
 document.getElementsByClassName("add-comment")[0].addEventListener("click", function () {
-    document.getElementsByClassName("new-comment")[0].classList.toggle("display-comment-area");
-    document.getElementsByClassName("new-comment")[0].querySelector("textarea").focus();
+    let commentArea = document.getElementsByClassName("new-comment")[0];
+    commentArea.classList.toggle("display-comment-area");
+    if (commentArea.getAttribute("aria-hidden") == "true") {
+        commentArea.querySelector("textarea").focus();
+        commentArea.setAttribute("aria-hidden", "false");
+    } else {
+        commentArea.setAttribute("aria-hidden", "true");
+    }
 })

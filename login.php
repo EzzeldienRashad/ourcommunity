@@ -27,7 +27,7 @@ if (isset($_SESSION["securityPassword"])) {
 	[$name, $password] = decode($_COOKIE["securityPassword"]);
 }
 if (isset($name) && isset($password)) {
-	$conn = mysqli_connect("sql104.epizy.com", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
+	$conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
 	$stmt = mysqli_prepare($conn, "SELECT securityPassword FROM Users WHERE name = ?");
 	mysqli_stmt_bind_param($stmt, "s", $name);
 	mysqli_stmt_execute($stmt);
@@ -47,7 +47,7 @@ if (isset($name) && isset($password)) {
 if (isset($_POST["submit"])) {
 	$_SESSION["email"] = $_POST["email"];
 	$_SESSION["password"] = $_POST["password"];
-	$conn = mysqli_connect("sql104.epizy.com", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
+	$conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
 	$stmt = mysqli_prepare($conn, "SELECT * FROM Users WHERE email = ?");
 	mysqli_stmt_bind_param($stmt, "s", $_POST["email"]);
 	mysqli_execute($stmt);
