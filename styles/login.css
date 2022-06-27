@@ -51,6 +51,16 @@ input:focus {
 input:focus::placeholder {
 	color: lightgrey;
 }
+.password-cont {
+	position: relative;
+}
+.password-eye {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	font-size: 30px;
+	cursor: pointer;
+}
 .err {
 	color: red;
 	font-size: 15px;

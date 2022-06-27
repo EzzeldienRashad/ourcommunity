@@ -38,7 +38,7 @@ foreach ($users as $user) {
 <a href="signup.php">sign up</a>
 <a href="login.php">log in</a>
 <br /><br />
-&copy; Ezzeldien 2022
+&copy; Ezzeldien 2022 - <?php echo date("Y") ?>
 </footer>
 </body>
 </html>

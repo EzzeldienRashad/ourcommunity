@@ -80,8 +80,11 @@ Log in to OurCommunity<br />
 	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
 		<input type="email" name="email" placeholder="Email address" autocomplete="email" style="<?php if (isset($_SESSION["emailErr"])) echo "border-color: red"; ?>" value="<?php if (isset($_SESSION["email"])) echo $_SESSION["email"]; ?>" />
 		<div id="emailErr" class="err"><?php if (isset($_SESSION["emailErr"])) {echo "Wrong Email"; unset($_SESSION["emailErr"]);} ?></div>
-		<input type="password" name="password" placeholder="Password" autocomplete="current-password" style="<?php if (isset($_SESSION["passwordErr"])) echo "border-color: red"; ?>" value="<?php if (isset($_SESSION["password"])) echo $_SESSION["password"]; ?>" />
-		<div id="passwordErr" class="err"><?php if (isset($_SESSION["passwordErr"])) {echo "Wrong Password"; unset($_SESSION["passwordErr"]);} ?></div>
+		<div class="password-cont">
+			<input type="password" name="password" placeholder="Password" autocomplete="current-password" style="padding-right: 40px;<?php if (isset($_SESSION["passwordErr"])) echo "border-color: red"; ?>" value="<?php if (isset($_SESSION["password"])) echo $_SESSION["password"]; ?>" />
+			<span class="password-eye">&#128065;</span>
+			<div id="passwordErr" class="err"><?php if (isset($_SESSION["passwordErr"])) {echo "Wrong Password"; unset($_SESSION["passwordErr"]);} ?></div>
+		</div>
 		<input type="submit" name="submit" class="submit" value="log in" />
 		<div class="remember-div">
 			<label>
@@ -103,7 +106,7 @@ Log in to OurCommunity<br />
 <a href="signup.php">sign up</a>
 <a href="login.php">log in</a>
 <br /><br />
-&copy; Ezzeldien 2022
+&copy; Ezzeldien 2022 - <?php echo date("Y") ?>
 </footer>
 </body>
 </html>

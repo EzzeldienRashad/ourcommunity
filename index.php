@@ -24,7 +24,8 @@ include "header.php";
 if (isset($_POST["comment"])) {
 	$comments = json_decode(file_get_contents("arrays/comments.json"));
 	$name = isset($_SESSION["securityPassword"]) ? decode($_SESSION["securityPassword"])[0] :
-	 isset($_COOKIE["securityPassword"]) ? decode($_COOKIE["securityPassword"])[0] : "unknown user";
+	(isset($_COOKIE["securityPassword"]) ? decode($_COOKIE["securityPassword"])[0] : "unknown user");
+	setcookie("a", $name);
 	$newComments = array(array($name, $_POST["commentText"] != "" ? $_POST["commentText"] : "|"), ...array_slice($comments, 0, 10));
 	file_put_contents("arrays/comments.json", json_encode($newComments));
 }
@@ -43,7 +44,7 @@ if (isset($_POST["comment"])) {
 <a href="signup.php">sign up</a>
 <a href="login.php">log in</a>
 <br /><br />
-&copy; Ezzeldien 2022
+&copy; Ezzeldien 2022 - <?php echo date("Y") ?>
 </footer>
 </body>
 </html>

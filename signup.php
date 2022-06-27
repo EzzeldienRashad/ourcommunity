@@ -95,8 +95,11 @@ if (isset($_POST["submit"])) {
 		<div id="nameErr" class="err"><?php if (isset($_SESSION["nameErr"])) {echo  $_SESSION["nameErr"]; unset($_SESSION["nameErr"]);} ?></div>
 		<input type="email" name="email" placeholder="email" autocomplete="email" style="<?php if (isset($_SESSION["emailErr"])) echo "border-color: red"; ?>" value="<?php if (isset($_SESSION["email"])) echo $_SESSION["email"]; ?>" />
 		<div id="emailErr" class="err"><?php if (isset($_SESSION["emailErr"])) {echo  $_SESSION["emailErr"]; unset($_SESSION["emailErr"]);} ?></div>
-		<input type="password" name="password" placeholder="password" autocomplete="new-password" value="<?php if (isset($_SESSION["password"])) echo $_SESSION["password"]; ?>" />
-		<div id="passStrengthInfo" class="err"></div>
+		<div class="password-cont">
+			<input type="password" name="password" placeholder="password" style="padding-right: 40px;" autocomplete="new-password" value="<?php if (isset($_SESSION["password"])) echo $_SESSION["password"]; ?>" />
+			<span class="password-eye">&#128065;</span>
+			<div id="passStrengthInfo" class="err"></div>
+		</div>
 		<input type="submit" name="submit" class="submit" value="Sign Up" />
 	</form>
 	<a class="login-redirect" href="login.php">Already have an account?</a>
@@ -107,7 +110,7 @@ if (isset($_POST["submit"])) {
 <a href="signup.php">sign up</a>
 <a href="login.php">log in</a>
 <br /><br />
-&copy; Ezzeldien 2022
+&copy; Ezzeldien 2022 - <?php echo date("Y") ?>
 </footer>
 </body>
 </html>

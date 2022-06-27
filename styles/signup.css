@@ -59,6 +59,18 @@ input {
 input::placeholder {
     color: darkslategrey;
 }
+progress::-moz-progress-bar {
+    background-color: var(--progress-color);
+}
+progress::-webkit-progress-value {
+    background-color: var(--progress-color);
+}
+progress {
+    color: var(--progress-color);
+    position: absolute;
+    top: 50px;
+    right: 20px;
+}
 .submit {
     display: inline-block;
     width: auto;
@@ -76,6 +88,16 @@ input:focus {
 }
 input:focus::placeholder {
     color: lightgrey;
+}
+.password-cont {
+    position: relative;
+}
+.password-eye {
+	position: absolute;
+	top: -5px;
+	right: 10px;
+	font-size: 30px;
+	cursor: pointer;
 }
 .err {
     color: red;
@@ -115,6 +137,9 @@ footer {
     input:focus {
         outline: solid lemonchiffon 1px;
         box-shadow: 0 0 2px 2px lemonchiffon;
+    }
+    progress {
+        width: 120px;
     }
     .form a {
         font-size: 15px;

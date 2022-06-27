@@ -1,34 +1,26 @@
-add google, facebook login
-add forgot password on login
-add more links to footer
-add eye symbol in password to see characters
-add progress to password to show strength
-add a question mark to password to show how to increase password strength by clicking on it
-add I agree to terms checkbox
-add error reporting to a file to solve errors users encounter
-add phone login
-add night mode
-learn pdo
-add animations
-add this year's date to copyright in the footer
-after signup redirect to a page to collect more information if the user wants like birthdate
-add settings page
-add pages to every link in the footer
-redirect from login or signup to index if user is logged in
-trim email, username and password
-add error pages for could not connect to database/page not found
-add links in footer for arabic language and about page
-add picture to each user
-do not show current user in "other users"
-fade effect to hello user at header on page load
 add effects to users cards on page load
 add different ways to show user cards
 add dates to comments
 add delete comments feature
+add "show older comments" feature
 add "I love this comment" feature
 add retype password field
-check website using lighthouse
-add wrong sign next to textbox to abort comment adding
+when user clicks on add comment, change it to do not add comment to hide text area
 add ourcommunity- prefix to the names of cookies and sessions
 show our community logo on header
 add comments to comments
+add animations
+add google, facebook login
+add night mode
+learn pdo
+add error reporting to a file to solve errors users encounter
+add phone login
+send email on signup that contains a welcome message and user information
+add friend request and send email on friend request (talking in a private page)
+try using js to fetch a php file that gets the comments from a database
+check website using lighthouse
+add more links to footer: about - how to make strong password - arabic
+add forgot password which redirects to a page that sends an email (after clicking a button) containing a password
+after signup redirect to a page to collect more information if the user wants like birthdate
+add settings page containing user info, email options, user picture
+add error pages for could not connect to database/page not found
