@@ -26,8 +26,13 @@ if (isset($_POST["comment"])) {
 	$name = isset($_SESSION["securityPassword"]) ? decode($_SESSION["securityPassword"])[0] :
 	(isset($_COOKIE["securityPassword"]) ? decode($_COOKIE["securityPassword"])[0] : "unknown user");
 	setcookie("a", $name);
-	$newComments = array(array($name, $_POST["commentText"] != "" ? $_POST["commentText"] : "|"), ...array_slice($comments, 0, 10));
-	file_put_contents("arrays/comments.json", json_encode($newComments));
+	if ($comments) {
+		$comments = array_slice($comments, 0, 50);
+		array_unshift($comments, array($name, $_POST["commentText"] != "" ? $_POST["commentText"] : "|"));
+	} else {
+		$comments = array(array($name, $_POST["commentText"] != "" ? $_POST["commentText"] : "|"));
+	}
+	file_put_contents("arrays/comments.json", json_encode($comments));
 }
 ?>
 <main>
@@ -38,6 +43,7 @@ if (isset($_POST["comment"])) {
 	<input class="add-comment-btn" type="submit" name="comment" value="+add" />
 </form>
 <div class="comments-cont"></div>
+<button class="more-comments">load more comments</button>
 
 </main>
 <footer>

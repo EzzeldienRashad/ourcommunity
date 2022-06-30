@@ -1,12 +1,15 @@
 // get and update comments
 let commentsCont = document.getElementsByClassName("comments-cont")[0];
+let commentsCount = 10;
 function loadComments() {
     fetch("arrays/comments.json?nocache=" + Date.now())
         .then(response => response.json())
         .then(function (comments) {
             let scroll = scrollY;
             commentsCont.innerHTML = "";
-            for (let [name, comment] of comments) {
+            for (let i = 1; i <= (comments.length > commentsCount ? commentsCount : comments.length); i++) {
+                let name = comments[i - 1][0];
+                let comment = comments[i - 1][1];
                 let commentCont = document.createElement("div");
                 commentCont.className = "comment";
                 let commenter = document.createElement("h2");
@@ -41,3 +44,10 @@ document.getElementsByClassName("add-comment")[0].addEventListener("click", func
         commentArea.setAttribute("aria-hidden", "true");
     }
 })
+//load more comments on button click
+document.getElementsByClassName("more-comments")[0].addEventListener("click", function () {
+    commentsCount += 10;
+    if (commentsCount >= 50) {
+        document.getElementsByClassName("more-comments")[0].remove();
+    }
+});

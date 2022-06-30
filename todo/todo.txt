@@ -12,6 +12,7 @@ add comments to comments
 add animations
 add google, facebook login
 add night mode
+make password strength progress a div with another one inside it (showing the progress)
 learn pdo
 add error reporting to a file to solve errors users encounter
 add phone login
