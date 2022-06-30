@@ -66,6 +66,10 @@ if (isset($_POST["logout"])) {
 	// show dropdown on menu click
 	document.getElementsByClassName("menu")[0].addEventListener("click", function () {
 		document.getElementsByClassName("dropdown")[0].classList.toggle("display-dropdown");
+		document.getElementsByTagName("main")[0].addEventListener("click", function menuHide() {
+			document.getElementsByClassName("dropdown")[0].classList.remove("display-dropdown");
+			document.getElementsByTagName("main")[0].removeEventListener("click", menuHide);
+		});
 	});
 	// position footer correctly
 	window.addEventListener("DOMContentLoaded", function() {

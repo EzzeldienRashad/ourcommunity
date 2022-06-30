@@ -11,6 +11,8 @@ h2 {
     padding: 20px 10px;
     font-size: 20px;
     margin: 10px;
+    transform: rotateX(-90deg);
+    transition-duration: 1s;
 }
 /***************** other devices ******************/
 @media only screen and (max-width: 750px) {
