@@ -10,7 +10,6 @@
 	<meta name="keywords" content="community, chat, message friends, meeting, main page, playing games" />
 	<script type="text/javascript" src="scripts/index.js" defer></script>
 	<script src="https://kit.fontawesome.com/5cf0e9fc67.js" crossorigin="anonymous"></script>
-	<script src="arrays/comments.json?nocache=<?php echo time(); ?>" ></script>
 	<link rel="icon" href="pictures/community_logo.webp">
 	<link rel="stylesheet" href="styles/index.css" />
 	<link rel="stylesheet" href="styles/header-footer.css" />
@@ -22,17 +21,11 @@
 <?php 
 include "header.php"; 
 if (isset($_POST["comment"])) {
-	$comments = json_decode(file_get_contents("arrays/comments.json"));
+	$commentsConn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
 	$name = isset($_SESSION["securityPassword"]) ? decode($_SESSION["securityPassword"])[0] :
-	(isset($_COOKIE["securityPassword"]) ? decode($_COOKIE["securityPassword"])[0] : "unknown user");
-	setcookie("a", $name);
-	if ($comments) {
-		$comments = array_slice($comments, 0, 50);
-		array_unshift($comments, array($name, $_POST["commentText"] != "" ? $_POST["commentText"] : "|"));
-	} else {
-		$comments = array(array($name, $_POST["commentText"] != "" ? $_POST["commentText"] : "|"));
-	}
-	file_put_contents("arrays/comments.json", json_encode($comments));
+	(isset($_COOKIE["securityPassword"]) ? decode($_COOKIE["securityPassword"])[0] : "*unknown user");
+	$commentText = $_POST["commentText"] != "" ? $_POST["commentText"] : "|";
+	mysqli_query($commentsConn, "INSERT INTO comments (name, body) VALUES ('$name', '$commentText')");	
 }
 ?>
 <main>

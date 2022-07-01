@@ -2,14 +2,14 @@
 let commentsCont = document.getElementsByClassName("comments-cont")[0];
 let commentsCount = 10;
 function loadComments() {
-    fetch("arrays/comments.json?nocache=" + Date.now())
+    fetch("arrays/comments.php")
         .then(response => response.json())
         .then(function (comments) {
             let scroll = scrollY;
             commentsCont.innerHTML = "";
             for (let i = 1; i <= (comments.length > commentsCount ? commentsCount : comments.length); i++) {
-                let name = comments[i - 1][0];
-                let comment = comments[i - 1][1];
+                let name = comments[i - 1]["name"];
+                let comment = comments[i - 1]["body"];
                 let commentCont = document.createElement("div");
                 commentCont.className = "comment";
                 let commenter = document.createElement("h2");
@@ -32,7 +32,7 @@ function loadComments() {
         });
 }
 loadComments();
-setInterval(loadComments, 1000);
+setInterval(loadComments, 5000);
 // showing comments area
 document.getElementsByClassName("add-comment")[0].addEventListener("click", function () {
     let commentArea = document.getElementsByClassName("new-comment")[0];
