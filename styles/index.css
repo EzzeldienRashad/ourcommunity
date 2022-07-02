@@ -9,11 +9,11 @@ h2 {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    max-width: 90%;
+    max-width: 80%;
     display: inline-block;
     margin-bottom: 0;
 }
-.comment span {
+.comment span.curve {
     background-color: darkgoldenrod;
     display: inline-block;
     border-top-right-radius: 50%;
@@ -29,7 +29,14 @@ h2 {
 }
 .comment {
     margin-bottom: 10px;
+}
+.comment-time {
     color: grey;
+    position: relative;
+    bottom: 5px;
+}
+.comment-body {
+    color: black;
 }
 .add-comment {
     background-color: gold;
@@ -88,13 +95,13 @@ h2 {
     }
     h2 {
         padding: 5px 15px 5px 5px;
-        font-size: 18px;
-        max-width: 93%;
+        font-size: 15px;
+        max-width: calc(100vw - 150px);
     }
     .add-comment-btn {
         padding: 15px 10px;
     }
-   .comment span {
+   .comment span.curve {
         height: 33.3px;
         width: 6%;
     }
@@ -104,6 +111,7 @@ h2 {
     }
     .comment {
         margin-bottom: 5px;
+        font-size: 12px;
     }
 
 }

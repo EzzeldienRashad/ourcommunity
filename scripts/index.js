@@ -19,7 +19,6 @@ function loadComments() {
                 let curve = document.createElement("span");
                 curve.className = "curve";
                 commentCont.append(curve);
-                commentCont.insertAdjacentHTML("beforeend", "<i class='fa-solid fa-clock'></i>");
                 let milliseconds = Date.now() - date.getTime();
                 let minutes = Math.round(milliseconds / 60_000);
                 let hours = Math.round(minutes / 60);
@@ -29,8 +28,12 @@ function loadComments() {
                 let commentDate = minutes < 1 ? "just now" : minutes < 60 ? "from " + minutes + " minutes" : 
                 hours < 24 ? "from " + hours + " hours" : days < 30 ? "from " + days + " days" :
                 months < 12 ? "from " + months + "months" : "from " + years + " years";
-                commentCont.append(document.createTextNode(commentDate));
+                let commentTime = document.createElement("span");
+                commentTime.innerHTML = "<i class='fa-solid fa-clock'></i>" + commentDate;
+                commentTime.className = "comment-time";
+                commentCont.append(commentTime);
                 let commentBody = document.createElement("div");
+                commentBody.className = "comment-body";
                 let commentArr = comment.replace(/\r/g, "").split("\n");
                 for (let commentPart of commentArr) {
                     commentBody.appendChild(document.createTextNode(commentPart));
@@ -44,7 +47,7 @@ function loadComments() {
         });
 }
 loadComments();
-setInterval(loadComments, 5000);
+setInterval(loadComments, 3000);
 // showing comments area
 document.getElementsByClassName("add-comment")[0].addEventListener("click", function () {
     let commentArea = document.getElementsByClassName("new-comment")[0];

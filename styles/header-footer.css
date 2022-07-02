@@ -125,14 +125,15 @@ footer {
     main {
         padding-top: 50px;
     }
-    h1, .hello {
+    h1 {
         font-size: 25px;
     }
     header {
         height: 40px;
     }
     .hello {
-        left: 35%;
+        left: 30%;
+        font-size: 22px;
     }
     .menu {
         width: 30px;
@@ -170,9 +171,11 @@ footer {
         padding-top: 40px;
     }
     h1, .hello {
-        font-size: 15px;
+        font-size: 13px;
     }
-
+    .hello {
+        left: 27%;
+    }
     .logout input {
         font-size: 15px;
     }
