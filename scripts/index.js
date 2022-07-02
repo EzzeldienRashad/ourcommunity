@@ -10,6 +10,7 @@ function loadComments() {
             for (let i = 1; i <= (comments.length > commentsCount ? commentsCount : comments.length); i++) {
                 let name = comments[i - 1]["name"];
                 let comment = comments[i - 1]["body"];
+                let date = new Date(comments[i - 1]["date"].replace(/:(?=.*?\s)/g, "-").replace(/\s/, "T"));
                 let commentCont = document.createElement("div");
                 commentCont.className = "comment";
                 let commenter = document.createElement("h2");
@@ -18,6 +19,17 @@ function loadComments() {
                 let curve = document.createElement("span");
                 curve.className = "curve";
                 commentCont.append(curve);
+                commentCont.insertAdjacentHTML("beforeend", "<i class='fa-solid fa-clock'></i>");
+                let milliseconds = Date.now() - date.getTime();
+                let minutes = Math.round(milliseconds / 60_000);
+                let hours = Math.round(minutes / 60);
+                let days = Math.round(minutes / 1440);
+                let months = Math.round(days / 30);
+                let years = Math.round(days / 365);
+                let commentDate = minutes < 1 ? "just now" : minutes < 60 ? "from " + minutes + " minutes" : 
+                hours < 24 ? "from " + hours + " hours" : days < 30 ? "from " + days + " days" :
+                months < 12 ? "from " + months + "months" : "from " + years + " years";
+                commentCont.append(document.createTextNode(commentDate));
                 let commentBody = document.createElement("div");
                 let commentArr = comment.replace(/\r/g, "").split("\n");
                 for (let commentPart of commentArr) {

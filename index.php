@@ -19,13 +19,15 @@
 </head>
 <body>
 <?php 
+date_default_timezone_set("Africa/Cairo");
 include "header.php"; 
 if (isset($_POST["comment"])) {
 	$commentsConn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
 	$name = isset($_SESSION["securityPassword"]) ? decode($_SESSION["securityPassword"])[0] :
 	(isset($_COOKIE["securityPassword"]) ? decode($_COOKIE["securityPassword"])[0] : "*unknown user");
 	$commentText = $_POST["commentText"] != "" ? $_POST["commentText"] : "|";
-	mysqli_query($commentsConn, "INSERT INTO comments (name, body) VALUES ('$name', '$commentText')");	
+	$date = date("Y:m:d H:i:s");
+	mysqli_query($commentsConn, "INSERT INTO comments (name, body, date) VALUES ('$name', '$commentText', '$date')");	
 }
 ?>
 <main>

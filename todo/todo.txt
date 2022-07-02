@@ -1,8 +1,5 @@
-make comments.json an array of objects instead of an array of arrays
 add dates to comments
 add delete comments feature
-add "show older comments" feature
-make comments.json a php file to prevent seeing it
 add "I love this comment" feature
 add retype password field
 when user clicks on add comment, change it to do not add comment to hide text area
