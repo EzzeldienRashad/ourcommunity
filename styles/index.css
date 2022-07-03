@@ -20,6 +20,14 @@ h2 {
     width: 9%;
     height: 50.5px;
     margin-right: 10px;
+    position: relative;
+}
+.comment span.curve i {
+    position: absolute;
+    top: 25px;
+    left: 35px;
+    color: darkred;
+    cursor: pointer;
 }
 .comment div {
     border: 2px solid black;
@@ -86,6 +94,9 @@ h2 {
     .add-comment-btn {
         right: 0;
     }
+    .comment span.curve i {
+        left: 10px;
+    }
 
 }
 @media only screen and (max-width: 600px) {
@@ -112,6 +123,10 @@ h2 {
     .comment {
         margin-bottom: 5px;
         font-size: 12px;
+    }
+    .comment span.curve i {
+        top: 15px;
+        left: 0;
     }
 
 }

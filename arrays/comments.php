@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Check if user doesn't exist
 include "../encrypt.php";
 if (isset($_SESSION["securityPassword"])) {

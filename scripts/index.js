@@ -1,16 +1,20 @@
 // get and update comments
 let commentsCont = document.getElementsByClassName("comments-cont")[0];
 let commentsCount = 10;
+let scrolled = false;
+let scroll = scrollY;
 function loadComments() {
     fetch("arrays/comments.php")
         .then(response => response.json())
         .then(function (comments) {
-            let scroll = scrollY;
+            scroll = scrollY;
             commentsCont.innerHTML = "";
             for (let i = 1; i <= (comments.length > commentsCount ? commentsCount : comments.length); i++) {
                 let name = comments[i - 1]["name"];
+                let hasComment = name == document.querySelector(".hello span").textContent;
                 let comment = comments[i - 1]["body"];
                 let date = new Date(comments[i - 1]["date"].replace(/:(?=.*?\s)/g, "-").replace(/\s/, "T"));
+                let id = comments[i - 1]["id"];
                 let commentCont = document.createElement("div");
                 commentCont.className = "comment";
                 let commenter = document.createElement("h2");
@@ -18,6 +22,12 @@ function loadComments() {
                 commentCont.append(commenter);
                 let curve = document.createElement("span");
                 curve.className = "curve";
+                if (hasComment) {
+                    curve.insertAdjacentHTML("beforeend", "<i class='fa-solid fa-circle-xmark fa-lg'></i>");
+                    curve.querySelector("i").addEventListener("click", function () {
+                        location.href = "?deleteCommentId=" + id + "&scroll=" + scrollY;
+                    });
+                }
                 commentCont.append(curve);
                 let milliseconds = Date.now() - date.getTime();
                 let minutes = Math.round(milliseconds / 60_000);
@@ -42,7 +52,11 @@ function loadComments() {
                 commentCont.append(commentBody);
                 commentsCont.append(commentCont);
                 curve.style.height = commenter.offsetHeight + "px";
-                scrollTo(0, scroll);
+            }
+            scrollTo(0, scroll);
+            if (/scroll=/.test(location.href) && !scrolled) {
+                scrollTo(0, Number(location.href.split("scroll=")[1]));
+                scrolled = true;
             }
         });
 }

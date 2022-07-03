@@ -21,6 +21,7 @@
 <?php 
 date_default_timezone_set("Africa/Cairo");
 include "header.php"; 
+//add commenting functionality
 if (isset($_POST["comment"])) {
 	$commentsConn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
 	$name = isset($_SESSION["securityPassword"]) ? decode($_SESSION["securityPassword"])[0] :
@@ -28,6 +29,10 @@ if (isset($_POST["comment"])) {
 	$commentText = $_POST["commentText"] != "" ? $_POST["commentText"] : "|";
 	$date = date("Y:m:d H:i:s");
 	mysqli_query($commentsConn, "INSERT INTO comments (name, body, date) VALUES ('$name', '$commentText', '$date')");	
+}
+//add delete comments functionality
+if (isset($_GET["deleteCommentId"])) {
+	mysqli_query($conn, "DELETE FROM comments WHERE name = '" . $name . "' and id = '" . $_GET["deleteCommentId"] . "'");
 }
 ?>
 <main>

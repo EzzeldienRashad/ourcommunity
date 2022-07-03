@@ -1,4 +1,3 @@
-add dates to comments
 add delete comments feature
 add "I love this comment" feature
 add retype password field

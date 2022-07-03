@@ -42,7 +42,7 @@ if (isset($_POST["logout"])) {
 ?>
 <span class="decoration"></span>
 <h1>OurCommunity</h1>
-<div class="hello"><?php echo "Hello, <span>" . $name . "</span>!"; ?></div>
+<div class="hello">Hello, <span><?php echo $name; ?></span>!</div>
 <div class="menu">
 	<span></span>
 	<span></span>

@@ -59,25 +59,34 @@ if (isset($_POST["submit"])) {
 		$_SESSION["emailErr"] = "*Email not valid";
 	} else {
 		$conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
-		$stmt = mysqli_prepare($conn, "SELECT * FROM Users WHERE email = ?");
-		mysqli_stmt_bind_param($stmt, "s", $_POST["email"]);
+		$stmt = mysqli_prepare($conn, "SELECT * FROM Users WHERE name = ?");
+		mysqli_stmt_bind_param($stmt, "s", $_POST["name"]);
 		mysqli_execute($stmt);
 		$result = mysqli_stmt_get_result($stmt);	
-		$info = mysqli_fetch_assoc($result);
+		$info = mysqli_fetch_all($result, MYSQLI_ASSOC);
 		if ($info) {
-			$_SESSION["emailErr"] = "*email already used by another user";
+			$_SESSION["nameErr"] = "*name already used by another user";
 		} else {
-			mysqli_stmt_free_result($stmt);
-			$stmt = mysqli_stmt_init($conn);
-			mysqli_stmt_prepare($stmt, "INSERT INTO Users (name, email, password, securityPassword)
-			VALUES (?, ?, ?, ?)");
-			$rand = rand();
-			mysqli_stmt_bind_param($stmt, "sssd", $_POST["name"], $_POST["email"], $_POST["password"], $rand);
-			mysqli_stmt_execute($stmt);
-			$securityPassword = encode($_POST["name"]);
-			$_SESSION["securityPassword"] = $securityPassword;
-			header("Location: index.php");
-			exit;
+			$stmt = mysqli_prepare($conn, "SELECT * FROM Users WHERE email = ?");
+			mysqli_stmt_bind_param($stmt, "s", $_POST["email"]);
+			mysqli_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);	
+			$info = mysqli_fetch_assoc($result);
+			if ($info) {
+				$_SESSION["emailErr"] = "*email already used by another user";
+			} else {
+				mysqli_stmt_free_result($stmt);
+				$stmt = mysqli_stmt_init($conn);
+				mysqli_stmt_prepare($stmt, "INSERT INTO Users (name, email, password, securityPassword)
+				VALUES (?, ?, ?, ?)");
+				$rand = rand();
+				mysqli_stmt_bind_param($stmt, "sssd", $_POST["name"], $_POST["email"], $_POST["password"], $rand);
+				mysqli_stmt_execute($stmt);
+				$securityPassword = encode($_POST["name"]);
+				$_SESSION["securityPassword"] = $securityPassword;
+				header("Location: index.php");
+				exit;
+			}
 		}
 	}
 }
