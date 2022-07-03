@@ -38,7 +38,10 @@ if ($comments) {
         $leastId = array_slice($comments, -$maxCommentsNum)[0]["id"];
         mysqli_query($commentsConn, "DELETE FROM comments WHERE ID < $leastId");
     }
-    echo json_encode(array_reverse($comments));
+	uasort($comments, function ($a, $b) {
+		return (($a["id"] < $b["id"]) ? 1 : -1);
+	});
+    echo json_encode(array_values($comments));
 } else {
     echo "[]";
 }
