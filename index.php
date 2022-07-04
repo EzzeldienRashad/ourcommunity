@@ -24,15 +24,28 @@ include "header.php";
 //add commenting functionality
 if (isset($_POST["comment"])) {
 	$commentsConn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
-	$name = isset($_SESSION["securityPassword"]) ? decode($_SESSION["securityPassword"])[0] :
-	(isset($_COOKIE["securityPassword"]) ? decode($_COOKIE["securityPassword"])[0] : "*unknown user");
 	$commentText = $_POST["commentText"] != "" ? $_POST["commentText"] : "|";
 	$date = date("Y:m:d H:i:s");
-	mysqli_query($commentsConn, "INSERT INTO comments (name, body, date) VALUES ('$name', '$commentText', '$date')");	
+	mysqli_query($commentsConn, "INSERT INTO Comments (name, body, date, lovers) VALUES ('$name', '$commentText', '$date', '[]')");	
 }
 //add delete comments functionality
 if (isset($_GET["deleteCommentId"])) {
-	mysqli_query($conn, "DELETE FROM comments WHERE name = '" . $name . "' and id = '" . $_GET["deleteCommentId"] . "'");
+	mysqli_query($conn, "DELETE FROM Comments WHERE name = '" . $name . "' and id = '" . $_GET["deleteCommentId"] . "'");
+}
+// add love comments functionality
+if (isset($_GET["loveCommentId"])) {
+	$loversResult = mysqli_query($conn, "SELECT lovers FROM Comments where id = '" . $_GET["loveCommentId"] . "' and name != '" . $name . "'");
+	$loversInfo = mysqli_fetch_assoc($loversResult);
+	if ($loversInfo) {
+		$lovers = json_decode($loversInfo["lovers"]);
+		if (($key = array_search($name, $lovers)) !== false) {
+			unset($lovers[$key]);
+		} else {
+			array_push($lovers, $name);
+		}
+		$newLovers = json_encode(array_values($lovers));
+		mysqli_query($conn, "UPDATE Comments SET lovers = '$newLovers' WHERE id = " . $_GET["loveCommentId"]);
+	}
 }
 ?>
 <main>

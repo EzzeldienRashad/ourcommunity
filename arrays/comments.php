@@ -29,14 +29,14 @@ if (isset($name) && isset($password)) {
 }
 //echo comments
 $commentsConn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
-$result = mysqli_query($commentsConn, "SELECT * FROM comments");
+$result = mysqli_query($commentsConn, "SELECT * FROM Comments");
 $comments = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);
 if ($comments) {
     $maxCommentsNum = 50;
     if (count($comments) > $maxCommentsNum) {
         $leastId = array_slice($comments, -$maxCommentsNum)[0]["id"];
-        mysqli_query($commentsConn, "DELETE FROM comments WHERE ID < $leastId");
+        mysqli_query($commentsConn, "DELETE FROM Comments WHERE ID < $leastId");
     }
 	uasort($comments, function ($a, $b) {
 		return (($a["id"] < $b["id"]) ? 1 : -1);

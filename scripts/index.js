@@ -15,6 +15,9 @@ function loadComments() {
                 let comment = comments[i - 1]["body"];
                 let date = new Date(comments[i - 1]["date"].replace(/:(?=.*?\s)/g, "-").replace(/\s/, "T"));
                 let id = comments[i - 1]["id"];
+                let lovers = JSON.parse(comments[i - 1]["lovers"]);
+                let loveCount = lovers.length;
+                console.log("lovers");
                 let commentCont = document.createElement("div");
                 commentCont.className = "comment";
                 let commenter = document.createElement("h2");
@@ -29,6 +32,16 @@ function loadComments() {
                     });
                 }
                 commentCont.append(curve);
+                let commentInfo = document.createElement("div");
+                commentInfo.className = "comment-info";
+                if (loveCount) {
+                    let love = document.createElement("span");
+                    love.className = "love-count";
+                    love.innerHTML = "<i class='fa-solid fa-heart'></i>";
+                    commentInfo.append(love);
+                    love.insertAdjacentHTML("afterend", "<br />");
+                    love.insertAdjacentHTML("beforebegin", loveCount);
+                }
                 let milliseconds = Date.now() - date.getTime();
                 let minutes = Math.round(milliseconds / 60_000);
                 let hours = Math.round(minutes / 60);
@@ -41,7 +54,8 @@ function loadComments() {
                 let commentTime = document.createElement("span");
                 commentTime.innerHTML = "<i class='fa-solid fa-clock'></i>" + commentDate;
                 commentTime.className = "comment-time";
-                commentCont.append(commentTime);
+                commentInfo.append(commentTime);
+                commentCont.append(commentInfo);
                 let commentBody = document.createElement("div");
                 commentBody.className = "comment-body";
                 let commentArr = comment.replace(/\r/g, "").split("\n");
@@ -49,12 +63,20 @@ function loadComments() {
                     commentBody.appendChild(document.createTextNode(commentPart));
                     commentBody.appendChild(document.createElement("br"));
                 }
+                if (!hasComment) {
+                    commentBody.insertAdjacentHTML("beforeend", "<i class='fa-solid fa-heart-circle-plus'></i>");
+                    let heart = commentBody.querySelector("i");
+                    heart.style.color = lovers.includes(document.querySelector(".hello span").textContent) ? "red" : "grey";
+                    heart.addEventListener("click", function () {
+                        location.href = "?loveCommentId=" + id + "&scroll=" + scrollY;
+                    });
+                }
                 commentCont.append(commentBody);
                 commentsCont.append(commentCont);
                 curve.style.height = commenter.offsetHeight + "px";
             }
             scrollTo(0, scroll);
-            if (/scroll=/.test(location.href) && !scrolled) {
+            if (location.href.includes("scroll=") && !scrolled) {
                 scrollTo(0, Number(location.href.split("scroll=")[1]));
                 scrolled = true;
             }
