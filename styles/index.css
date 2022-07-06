@@ -121,7 +121,7 @@ h2 {
     color: darkslategray;
     width: 80%;
     font-size: 15px;
-    height: 50px;
+    height: 100px;
 }
 .add-c2c-div {
     height: 0;
@@ -130,7 +130,7 @@ h2 {
     transition-timing-function: linear;
 }
 .add-c2c-div-show {
-    height: 50px;
+    height: 100px;
 }
 .add-c2c-div-show .add-c2c-textarea:focus {
     outline: 1px solid darkslategrey;
@@ -153,6 +153,13 @@ h2 {
     }
     .comment span.curve i {
         left: 10px;
+    }
+    .add-c2c-btn {
+        font-size: 13px;
+        padding: 5px;
+    }
+    .add-c2c-textarea {
+        width: 70%;
     }
 
 }
@@ -185,6 +192,12 @@ h2 {
     .comment span.curve i {
         top: 15px;
         left: 0;
+    }
+    .add-c2c-btn {
+        font-size: 10px;
+    }
+    .add-c2c-textarea {
+        width: 60%;
     }
 
 }
