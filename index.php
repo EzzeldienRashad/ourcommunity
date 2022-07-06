@@ -26,7 +26,7 @@ if (isset($_POST["comment"])) {
 	$commentsConn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
 	$commentText = $_POST["commentText"] != "" ? $_POST["commentText"] : "|";
 	$date = date("Y:m:d H:i:s");
-	mysqli_query($commentsConn, "INSERT INTO Comments (name, body, date, lovers) VALUES ('$name', '$commentText', '$date', '[]')");	
+	mysqli_query($commentsConn, "INSERT INTO Comments (name, body, date, lovers, comments) VALUES ('$name', '$commentText', '$date', '[]', '[]')");	
 }
 //add delete comments functionality
 if (isset($_GET["deleteCommentId"])) {
@@ -45,6 +45,17 @@ if (isset($_GET["loveCommentId"])) {
 		}
 		$newLovers = json_encode(array_values($lovers));
 		mysqli_query($conn, "UPDATE Comments SET lovers = '$newLovers' WHERE id = " . $_GET["loveCommentId"]);
+	}
+}
+//add comment to comment functionality
+if (isset($_POST["c2cSubmit"]) && isset($_GET["c2cId"])) {
+	$c2cQuery = mysqli_query($conn, "SELECT comments FROM Comments WHERE id = " . $_GET["c2cId"]);
+	$c2cs = mysqli_fetch_assoc($c2cQuery);
+	if ($c2cs) {
+		$c2cs = json_decode(str_replace("\r\n", "", $c2cs["comments"]));
+		array_push($c2cs, "$name:" . $_POST["c2cContent"]);
+		$newC2cs = json_encode(array_values($c2cs));
+		mysqli_query($conn, "UPDATE Comments SET comments = '$newC2cs' WHERE id = " . $_GET["c2cId"]);
 	}
 }
 ?>

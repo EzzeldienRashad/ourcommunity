@@ -101,6 +101,50 @@ h2 {
     color: white;
     border: 1px solid darkviolet;
 }
+.add-c2c {
+    background-color: lightcyan;
+    float: right;
+}
+.c2c-cont {
+    padding: 20px;
+    padding-left: 30px;
+    font-size: 15px;
+}
+.c2c-cont div {
+    color: darkslategray;
+}
+.c2c-cont hr {
+    border: 1px solid lightgrey;
+}
+.add-c2c-textarea {
+    border: 3px solid lightgrey;
+    color: darkslategray;
+    width: 80%;
+    font-size: 15px;
+    height: 50px;
+}
+.add-c2c-div {
+    height: 0;
+    overflow: hidden;
+    transition-duration: 0.25s;
+    transition-timing-function: linear;
+}
+.add-c2c-div-show {
+    height: 50px;
+}
+.add-c2c-div-show .add-c2c-textarea:focus {
+    outline: 1px solid darkslategrey;
+}
+.add-c2c-btn {
+    padding: 10px;
+    color: white;
+    background-color: darkblue;
+    float: right;
+    font-weight: bold;
+}
+.c2c-name {
+    color: red;
+}
 /***************** other devices *****************/
 @media only screen and (max-width: 750px) {
 

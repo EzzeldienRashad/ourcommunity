@@ -1,4 +1,3 @@
-add "I love this comment" feature
 add retype password field
 when user clicks on add comment, change it to do not add comment to hide text area
 add ourcommunity- prefix to the names of cookies and sessions
