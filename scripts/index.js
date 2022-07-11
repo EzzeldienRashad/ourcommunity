@@ -59,7 +59,7 @@ function loadComments() {
                 commentCont.append(commentInfo);
                 let commentBody = document.createElement("div");
                 commentBody.className = "comment-body";
-                let commentArr = comment.replace(/\\r/g, "").split("\\n");
+                let commentArr = comment.replace(/\r/g, "").split("\n");
                 for (let commentPart of commentArr) {
                     commentBody.appendChild(document.createTextNode(commentPart));
                     commentBody.appendChild(document.createElement("br"));
@@ -83,11 +83,12 @@ function loadComments() {
                     c2cNameSpan.textContent = c2cName;
                     c2cDiv.append(c2cNameSpan);
                     let c2cArray = c2c.split(c2cName)[1].replace(/\r/g, "").split("\n");
+                    let c2cParagraph = document.createElement("p");
                     for (let c2cPart of c2cArray) {
-                        c2cDiv.appendChild(document.createElement("br"));
-                        c2cDiv.appendChild(document.createTextNode("\u00A0\u00A0\u00A0\u00A0\u00A0"));
-                        c2cDiv.appendChild(document.createTextNode(c2cPart));
+                        c2cParagraph.appendChild(document.createTextNode(c2cPart));
+                        c2cParagraph.appendChild(document.createElement("br"));
                     }
+                    c2cDiv.append(c2cParagraph);
                     c2cCont.append(c2cDiv);
                     c2cCont.append(document.createElement("hr"));
                 }

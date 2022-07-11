@@ -19,17 +19,26 @@
 <body>
 <?php include "header.php"; ?>
 <main>
-
-<h2>Other users:</h2>
 <?php
-// show users present in database
+// show users/groups present in database
 $conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
-$result = mysqli_query($conn, "SELECT * FROM Users");
-$users = mysqli_fetch_all($result, MYSQLI_ASSOC);
-mysqli_free_result($result);
-foreach ($users as $user) {
-	if ($user["name"] != $name) {
-		echo "<div class='user'>" . $user["name"] . "</div>";
+if (isset($_GET["groups"]) && $_GET["groups"] == "true") {
+	echo "<h2>Groups:</h2>";
+	$result = mysqli_query($conn, "SELECT groupName FROM Groups");
+	$groups = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	mysqli_free_result($result);
+	foreach ($groups as $group) {
+		echo "<div class='user'>" . $group["groupName"] . "</div>";
+	}
+} else {
+	echo "<h2>Other users:</h2>";
+	$result = mysqli_query($conn, "SELECT * FROM Users");
+	$users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	mysqli_free_result($result);
+	foreach ($users as $user) {
+		if ($user["name"] != $name) {
+			echo "<div class='user'>" . $user["name"] . "</div>";
+		}
 	}
 }
 ?>

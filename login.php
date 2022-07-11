@@ -28,7 +28,7 @@ if (isset($_SESSION["securityPassword"])) {
 }
 if (isset($name) && isset($password)) {
 	$conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
-	$stmt = mysqli_prepare($conn, "SELECT securityPassword FROM Users WHERE name = ?");
+	$stmt = mysqli_prepare($conn, "SELECT securityPassword FROM epiz_31976759_OurCommunity.Users WHERE name = ?");
 	mysqli_stmt_bind_param($stmt, "s", $name);
 	mysqli_stmt_execute($stmt);
 	$result = mysqli_stmt_get_result($stmt);
@@ -48,7 +48,7 @@ if (isset($_POST["submit"])) {
 	$_SESSION["email"] = $_POST["email"];
 	$_SESSION["password"] = $_POST["password"];
 	$conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
-	$stmt = mysqli_prepare($conn, "SELECT * FROM Users WHERE email = ?");
+	$stmt = mysqli_prepare($conn, "SELECT * FROM epiz_31976759_OurCommunity.Users WHERE email = ?");
 	mysqli_stmt_bind_param($stmt, "s", $_POST["email"]);
 	mysqli_execute($stmt);
 	$result = mysqli_stmt_get_result($stmt);	

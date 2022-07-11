@@ -1,18 +1,8 @@
-add retype password field
-when user clicks on add comment, change it to do not add comment to hide text area
-add ourcommunity- prefix to the names of cookies and sessions
-show our community logo on header
-add comments to comments
-add animations
 add google, facebook login
-add night mode
-make password strength progress a div with another one inside it (showing the progress)
 learn pdo
-add error reporting to a file to solve errors users encounter
 add phone login
 send email on signup that contains a welcome message and user information
 add friend request and send email on friend request (talking in a private page)
-try using js to fetch a php file that gets the comments from a database
 check website using lighthouse
 add more links to footer: about - how to make strong password - arabic
 add forgot password which redirects to a page that sends an email (after clicking a button) containing a password

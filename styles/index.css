@@ -110,8 +110,10 @@ h2 {
     padding-left: 30px;
     font-size: 15px;
 }
-.c2c-cont div {
+.c2c-cont div p {
     color: darkslategray;
+    padding-left: 20px;
+    margin: 0px;
 }
 .c2c-cont hr {
     border: 1px solid lightgrey;
@@ -130,7 +132,7 @@ h2 {
     transition-timing-function: linear;
 }
 .add-c2c-div-show {
-    height: 100px;
+    height: 110px;
 }
 .add-c2c-div-show .add-c2c-textarea:focus {
     outline: 1px solid darkslategrey;

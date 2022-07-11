@@ -13,7 +13,7 @@ if (isset($_SESSION["securityPassword"])) {
 }
 if (isset($name) && isset($password)) {
 	$conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
-	$stmt = mysqli_prepare($conn, "SELECT securityPassword FROM Users WHERE name = ?");
+	$stmt = mysqli_prepare($conn, "SELECT securityPassword FROM epiz_31976759_OurCommunity.Users WHERE name = ?");
 	mysqli_stmt_bind_param($stmt, "s", $name);
 	mysqli_execute($stmt);
 	$result = mysqli_stmt_get_result($stmt);	
@@ -39,6 +39,12 @@ if (isset($_POST["logout"])) {
 	setcookie("securityPassword", "", time() - 3600, "/");
 	header("Location: login.php");
 }
+// Exit group if they press logout
+if (isset($_POST["groupLogout"])) {
+	unset($_SESSION["groupCode"]);
+	setcookie("groupCode", "", time() - 3600, "/");
+	header("Location: groups.php");
+}
 ?>
 <span class="decoration"></span>
 <h1>OurCommunity</h1>
@@ -51,18 +57,22 @@ if (isset($_POST["logout"])) {
 <div class="dropdown">
 <a href="index.php">main page</a>
 <a href="users.php">other users</a>
+<a href="users.php?groups=true">groups</a>
 <form class="logout" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">  
 	<input type="submit" name="logout" value="logout" />
+</form>
+<form class="logout" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">  
+	<input type="submit" name="groupLogout" value="Exit group" />
 </form>
 </div>
 </header>
 <script>
 	// Position "Hello user!" correctly
-	if (document.documentElement.clientWidth > 900) {
-		document.getElementsByClassName("hello")[0].style.left =
-			document.documentElement.clientWidth / 2 - document.getElementsByClassName("hello")[0]
-			.offsetWidth / 2 + "px";
-	}
+	document.getElementsByClassName("hello")[0].style.left =
+		(document.getElementsByClassName("menu")[0].getBoundingClientRect().left - 
+		document.getElementsByTagName("h1")[0].getBoundingClientRect().right) / 2 - 
+		document.getElementsByClassName("hello")[0].offsetWidth / 2 + 
+		document.getElementsByTagName("h1")[0].getBoundingClientRect().right + "px";
 	// show dropdown on menu click
 	document.getElementsByClassName("menu")[0].addEventListener("click", function () {
 		document.getElementsByClassName("dropdown")[0].classList.toggle("display-dropdown");

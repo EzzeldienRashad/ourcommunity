@@ -43,7 +43,6 @@ h1 {
     display: inline-block;
     position: absolute;
     top: 10px;
-    left: 40%;
     font-size: 30px;
 }
 .hello span {
@@ -100,7 +99,7 @@ h1 {
 .dropdown a:first-child {
     border-radius: 5px 5px 0 0;
 }
-.logout input {
+.logout:last-child input {
     cursor: pointer;
     border-radius: 0 0 5px 5px;
 }
@@ -132,7 +131,6 @@ footer {
         height: 40px;
     }
     .hello {
-        left: 30%;
         font-size: 22px;
     }
     .menu {
@@ -172,9 +170,6 @@ footer {
     }
     h1, .hello {
         font-size: 13px;
-    }
-    .hello {
-        left: 27%;
     }
     .logout input {
         font-size: 15px;
