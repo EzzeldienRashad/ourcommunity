@@ -54,7 +54,7 @@ if (isset($groupName) && isset($groupPassword)) {
 //add commenting functionality
 if (isset($_POST["comment"])) {
 	$commentsConn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
-	$commentText = $_POST["commentText"] != "" ? str_replace("\\", "\\\\", $_POST["commentText"]) : "|";
+	$commentText = $_POST["commentText"] != "" ? $_POST["commentText"] : "\r\n";
 	$date = date("Y:m:d H:i:s");
 	$commentStmt = mysqli_prepare($commentsConn, "INSERT INTO epiz_31976759_OurCommunity.Comments (name, body, date, lovers, comments, groupName) VALUES (?, ?, ?, '[]', '[]', ?)");
 	mysqli_stmt_bind_param($commentStmt, "ssss", $name, $commentText, $date, $groupName);

@@ -6,25 +6,28 @@ let joinGroup = document.getElementsByClassName("join-group")[0],
 	joinGroupMethod = document.getElementsByClassName("join-group-method")[0],
 	createGroupFields = document.getElementsByClassName("create-group-fields")[0],
 	joinGroupFields = document.getElementsByClassName("join-group-fields")[0];
+joinGroupFields.style.width = "0";
+joinGroupMethod.style.height = "0";
+createGroupFields.style.height = "0";
 joinGroup.addEventListener("click", function () {
-	joinGroupMethod.style.height = "40vh";
+	joinGroupMethod.style.height = "";
     joinGroup.style.height = "0";
     createGroup.style.height = "0";
 });
 enterForm.addEventListener("click", function () {
-    joinGroupFields.style.width = "auto";
+    joinGroupFields.style.width = "";
     enterForm.style.width = "0";
     showList.style.width = "0";
 });
 createGroup.addEventListener("click", function () {
-	createGroupFields.style.height = "40vh";
+	createGroupFields.style.height = "";
     joinGroup.style.height = "0";
     createGroup.style.height = "0";
 });
 document.getElementsByClassName("fa-share")[0].addEventListener("click", function () {
-    joinGroupMethod.style.height = "";
-    createGroupFields.style.height = "";
-    joinGroupFields.style.width = "";
+    joinGroupMethod.style.height = "0";
+    createGroupFields.style.height = "0";
+    joinGroupFields.style.width = "0";
     joinGroup.style.height = "";
     createGroup.style.height = "";
 	enterForm.style.width = "";
@@ -38,7 +41,7 @@ if (document.getElementsByClassName("signupNameErr")[0]) {
 	joinGroup.style.height = "0";
 	joinGroup.style.transitionDuration = "";
 	createGroupFields.style.transitionDuration = "0s";
-	createGroupFields.style.height = "40vh";
+	createGroupFields.style.height = "";
 	createGroupFields.style.transitionDuration = "";
 }
 if (document.getElementsByClassName("loginNamePasswordErr")[0]) {
@@ -49,7 +52,7 @@ if (document.getElementsByClassName("loginNamePasswordErr")[0]) {
 	joinGroup.style.height = "0";
 	joinGroup.style.transitionDuration = "";
 	joinGroupMethod.style.transitionDuration = "0s";
-	joinGroupMethod.style.height = "40vh";
+	joinGroupMethod.style.height = "";
 	joinGroupMethod.style.transitionDuration = "";
 	enterForm.style.transitionDuration = "0s";
 	enterForm.style.width = "0";
@@ -58,7 +61,7 @@ if (document.getElementsByClassName("loginNamePasswordErr")[0]) {
 	showList.style.width = "0";
 	showList.style.transitionDuration = "";
 	joinGroupFields.style.transitionDuration = "0s";
-	joinGroupFields.style.width = "auto";
+	joinGroupFields.style.width = "";
 	joinGroupFields.style.transitionDuration = "";
 }
 // Check password strength

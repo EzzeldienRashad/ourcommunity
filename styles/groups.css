@@ -59,7 +59,6 @@ span.center {
     position: relative;
     display: inline-block;
     width: 40%;
-    height: 90%;
     margin: 10px 4.7%;
     border: 5px dashed white;
     border-radius: 20px;
@@ -98,17 +97,11 @@ span.center {
     outline: 5px solid green;
     color: white;
 }
-.join-group-method, .create-group-fields {
-    height: 0;
-    transition-duration: .5s;
-}
 .create-group-fields {
     padding: 0 20px;
     display: inline-block;
 }
 .join-group-fields {
-    width: 0;
-    transition-duration: .5s;
     overflow: hidden;
     padding: 20px 0;
 }

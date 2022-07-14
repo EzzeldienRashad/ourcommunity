@@ -24,7 +24,7 @@
 $conn = mysqli_connect("localhost", "epiz_31976759", "xhb1FTZFr4SdTM9", "epiz_31976759_OurCommunity");
 if (isset($_GET["groups"]) && $_GET["groups"] == "true") {
 	echo "<h2>Groups:</h2>";
-	$result = mysqli_query($conn, "SELECT groupName FROM Groups");
+	$result = mysqli_query($conn, "SELECT groupName FROM epiz_31976759_OurCommunity.Groups");
 	$groups = mysqli_fetch_all($result, MYSQLI_ASSOC);
 	mysqli_free_result($result);
 	foreach ($groups as $group) {
